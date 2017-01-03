@@ -22,7 +22,7 @@
 <h4>Comments</h4>
 <% post.comments.forEach(function(comment) { %>
   <div class="well">
-    <h5>from <%= comment.name %></h5>
+    <h5>from <%= comment.name %> <small>at <%= comment.createdAt %></small></h5>
     <p><%= comment.content %></p>
   </div>
 <% }); %>
