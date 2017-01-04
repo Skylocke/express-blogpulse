@@ -45,11 +45,11 @@ router.get('/:id', function(req, res) {
 
 });
 
-// POST /posts/:id/comment -- create a new comment
+// POST /posts/:id/comments -- create a new comment
 router.post('/:id/comments', function(req, res) {
   console.log("body:", req.body);
   db.comment.create({
-    name: req.body.name,
+    name: req.body.name || 'anon',
     content: req.body.content,
     postId: req.params.id
   })
@@ -60,5 +60,7 @@ router.post('/:id/comments', function(req, res) {
     res.status(400).render('main/404');
   });
 });
+
+// PUT /posts/:id/comments -- edit an existing comment
 
 module.exports = router;
