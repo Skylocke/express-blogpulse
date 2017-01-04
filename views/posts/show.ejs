@@ -8,23 +8,35 @@
 
 <hr />
 
-<a data-toggle="collapse" href="#comment-form"><h4>Leave a Comment</h4></a>
-<div id="comment-form" class="form collapse">
-  <form class="form-group" method="POST" action="/posts/<%= post.id %>">
-    <input name="name" type="text" class="form-control" id="" placeholder="Your Name">
-    <label for=""></label>
-    <textarea name="content" class="form-control" id="" placeholder="Your Comment"></textarea>
-    <input class="btn btn-default" type="submit">
-  </form>
-</div>
-<hr />
-
-<h4>Comments</h4>
-<% post.comments.forEach(function(comment) { %>
-  <div class="well">
-    <h5>from <%= comment.name %> <small>at <%= comment.createdAt %></small></h5>
-    <p><%= comment.content %></p>
+<div id="add-comment">
+  <a data-toggle="collapse" href="#comment-form"><h4>Add Comment</h4></a>
+  <div id="comment-form" class="form collapse">
+    <form class="form-group" method="POST" action="/posts/<%= post.id %>">
+      <input name="name" type="text" class="form-control" id="" placeholder="Your Name">
+      <textarea name="content" class="form-control" id="" placeholder="Your Comment"></textarea>
+      <input class="btn btn-default" type="submit">
+    </form>
   </div>
-<% }); %>
+</div>
+
+<div id="all-the-comments">
+  <h4>Comments</h4>
+  <% post.comments.forEach(function(comment, id) { %>
+    <div class="well">
+      <div>
+        <h5>from <%= comment.name %> <small>at <%= comment.createdAt %></small></h5>
+        <p><%= comment.content %></p>
+      </div>
+      <div class="form">
+        <form action="/posts/<%= post.id %>/comments">
+          <input name="name" type="text" class="form-control" id="" placeholder="<%= comment.name %>">
+          <textarea name="content" class="form-control" id="" placeholder="<%= comment.content %>"></textarea>
+          <button class="btn btn-default" type="submit">Save Changes</button>
+        </form>
+      </div>
+    </div>
+  <% }); %>
+  <hr />
+</div>
 
 <a href="/">&larr; Back Home</a>
