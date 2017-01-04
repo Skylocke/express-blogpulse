@@ -11,7 +11,7 @@
 <div id="add-comment">
   <a data-toggle="collapse" href="#comment-form"><h4>Add Comment</h4></a>
   <div id="comment-form" class="form collapse">
-    <form class="form-group" method="POST" action="/posts/<%= post.id %>">
+    <form class="form-group" method="POST" action="/posts/<%= post.id %>/comment">
       <input name="name" type="text" class="form-control" id="" placeholder="Your Name">
       <textarea name="content" class="form-control" id="" placeholder="Your Comment"></textarea>
       <input class="btn btn-default" type="submit">
