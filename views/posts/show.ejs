@@ -29,9 +29,9 @@
       </div>
       <div class="form">
         <form action="/posts/<%= post.id %>/comments">
-          <input name="name" type="text" class="form-control" id="" placeholder="<%= comment.name %>">
-          <textarea name="content" class="form-control" id="" placeholder="<%= comment.content %>"></textarea>
-          <button class="btn btn-default" type="submit">Save Changes</button>
+          <input name="name" type="text" class="form-control" id="" value="<%= comment.name %>">
+          <textarea name="content" class="form-control" id=""><%= comment.content %></textarea>
+          <button class="btn btn-default" type="submit"><small>Save Changes</small></button>
         </form>
       </div>
     </div>
