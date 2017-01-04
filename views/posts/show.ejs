@@ -9,8 +9,8 @@
 <hr />
 
 <div id="add-comment">
-  <a data-toggle="collapse" href="#comment-form"><h4>Add Comment</h4></a>
-  <div id="comment-form" class="form collapse">
+  <a data-toggle="collapse" href="#add-comment-form"><h4>Add Comment</h4></a>
+  <div id="add-comment-form" class="form collapse">
     <form class="form-group" method="POST" action="/posts/<%= post.id %>/comments">
       <input name="name" type="text" class="form-control" id="" placeholder="Your Name">
       <textarea name="content" class="form-control" id="" placeholder="Your Comment"></textarea>
@@ -24,10 +24,12 @@
   <% post.comments.forEach(function(comment, id) { %>
     <div class="well">
       <div>
-        <h5>from <%= comment.name %> <small>at <%= comment.createdAt %></small></h5>
+        <h5>from <%= comment.name %> <small>at <%= moment(comment.createdAt).calendar() %></small></h5>
         <p><%= comment.content %></p>
+        <a data-toggle="collapse" href="#edit-comment-form"><small>Edit Comment</small></a>
       </div>
-      <div class="form">
+
+      <div id="edit-comment-form" class="form collapse">
         <form action="/posts/<%= post.id %>/comments">
           <input name="id" type="number" value="<%= comment.id %>" class="hidden">
           <input name="name" type="text" class="form-control" id="" placeholder="Your Name" value="<%= comment.name %>">
