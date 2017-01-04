@@ -46,7 +46,7 @@ router.get('/:id', function(req, res) {
 });
 
 // POST /posts/:id/comment -- create a new comment
-router.post('/:id/comment', function(req, res) {
+router.post('/:id/comments', function(req, res) {
   console.log("body:", req.body);
   db.comment.create({
     name: req.body.name,
